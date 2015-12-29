@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { IndexLink } from 'react-router';
 import { usage, todo } from './styles';
 import { example, p, link } from '../homepage/styles';
-import { setConfig } from '../../actions';
+import { setConfig } from '../../actions/config';
 
 class Usage extends Component {
 
