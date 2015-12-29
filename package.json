@@ -7,7 +7,8 @@
   },
   "author": "zoetrope",
   "license": "MIT",
-  "dependencies":{
+  "dependencies": {
+    "bootstrap-styl": "^5.0.5",
     "flummox": "^3.5.2",
     "history": "^1.13.0",
     "lodash": "^3.10.0",
@@ -19,7 +20,8 @@
     "redbox-react": "^1.1.1",
     "redux": "^3.0.4",
     "redux-devtools": "^2.1.5",
-    "whatwg-fetch": "^0.9.0"
+    "whatwg-fetch": "^0.9.0",
+    "when": "^3.7.3"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
@@ -40,7 +42,6 @@
     "stylus-loader": "1.2.1",
     "webpack": "^1.9.6",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.4.1",
-    "when": "^3.7.3"
+    "webpack-hot-middleware": "^2.4.1"
   }
 }

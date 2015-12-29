@@ -7,7 +7,7 @@ var cssLoader = ExtractTextPlugin.extract(
   'css-loader?module&localIdentName=[name]__[local]___[hash:base64:5]' +
     '&disableStructuralMinification' +
   '!autoprefixer-loader!' +
-  'stylus-loader?paths=src/app/client/css/&import=./ctx'
+  'stylus-loader?paths[]=src/app/client/css/&paths[]=node_modules/bootstrap-styl/&import=./ctx'
 );
 
 var plugins = [
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     'style-loader',
     'css-loader?module&disableStructuralMinification' +
       '!autoprefixer-loader' +
-      '!stylus-loader?paths=src/app/client/css/&import=./ctx'
+      '!stylus-loader?paths=src/app/client/css/&paths[]=node_modules/bootstrap-styl&import=./ctx'
   );
 };
 
@@ -63,7 +63,8 @@ var config  = {
     alias: {
       '#app': path.join(__dirname, '/src/app/client'),
       '#c': path.join(__dirname, '/src/app/client/components'),
-      '#css': path.join(__dirname, '/src/app/client/css')
+      '#css': path.join(__dirname, '/src/app/client/css'),
+      'bootstrap': path.join(__dirname, '/node_modules/bootstrap-styl/bootstrap')
     }
   },
   svgo1: {
