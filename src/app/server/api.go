@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 )
 
+// Dictionary data
 type Dictionary struct {
 	Word        string `json:"word`
 	Class       string `json:"class`
@@ -33,6 +34,7 @@ func (api *API) ConfHandler(c *echo.Context) error {
 	return nil
 }
 
+// SearchWordHandler handle to search in dictionary with given word
 func (api *API) SearchWordHandler(c *echo.Context) error {
 	//logger := c.Echo().Logger()
 	//app := c.Get("app").(*App)
@@ -51,7 +53,7 @@ func (api *API) SearchWordHandler(c *echo.Context) error {
 	Do()
 
 	if searchResult.Hits != nil {
-		var dics []Dictionary = make([]Dictionary, 0, searchResult.Hits.TotalHits)
+		var dics = make([]Dictionary, 0, searchResult.Hits.TotalHits)
 		for _, hit := range searchResult.Hits.Hits {
 			var d Dictionary
 			err := json.Unmarshal(*hit.Source, &d)
