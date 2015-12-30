@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var cssLoader = ExtractTextPlugin.extract(
-  'style-loader',
+  'style-loader!',
   'css-loader?module&localIdentName=[name]__[local]___[hash:base64:5]' +
-    '&disableStructuralMinification' +
+  '&disableStructuralMinification' +
   '!autoprefixer-loader!' +
   'stylus-loader?paths[]=src/app/client/css/&paths[]=node_modules/bootstrap-styl/&import=./ctx'
 );
@@ -54,7 +54,10 @@ var config  = {
       {
         test: /\.jsx?$/,
         include: path.join(__dirname, 'src/app/client'),
-        loaders: ['babel']
+        loader: 'babel',
+        query:{
+          presets: ['react', 'es2015', 'stage-0']
+        }
       }
     ]
   },
@@ -63,8 +66,7 @@ var config  = {
     alias: {
       '#app': path.join(__dirname, '/src/app/client'),
       '#c': path.join(__dirname, '/src/app/client/components'),
-      '#css': path.join(__dirname, '/src/app/client/css'),
-      'bootstrap': path.join(__dirname, '/node_modules/bootstrap-styl/bootstrap')
+      '#css': path.join(__dirname, '/src/app/client/css')
     }
   },
   svgo1: {

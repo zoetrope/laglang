@@ -1,6 +1,7 @@
 import { compose, createStore as reduxCreateStore} from 'redux';
-import { devTools, persistState } from 'redux-devtools';
 import goStarterKit from './reducers';
+import { persistState } from 'redux-devtools';
+import DevTools from './router/devtools'
 
 let finalCreateStore;
 if (process.env.NODE_ENV === 'production') {
@@ -8,12 +9,13 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   try {
     finalCreateStore = compose(
-      devTools(),
+      DevTools.instrument(),
       persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
     )(reduxCreateStore).bind(null, goStarterKit);
     console.log('dev tools added');
   } catch (e) {
     finalCreateStore = reduxCreateStore.bind(null, goStarterKit);
+    console.log('dev tools failed' + e);
   }
 }
 

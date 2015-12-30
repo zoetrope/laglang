@@ -14,3 +14,4 @@ src/app/server/data/bundle.server.js
 
 .idea
 *.iml
+/sandbox
