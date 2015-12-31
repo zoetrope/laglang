@@ -17,7 +17,7 @@ export function receiveWordsAction(words) {
 export function searchWord(query) {
   return dispatch => {
     dispatch(searchWordAction(query));
-    return fetch('/api/v1/word/search?query=' + query)
+    return fetch('/api/v1/dictionary/search?query=' + query)
       .then(r => r.json())
       .then(words=> dispatch(receiveWordsAction(words)));
   };

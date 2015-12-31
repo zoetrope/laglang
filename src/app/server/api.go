@@ -24,7 +24,7 @@ type API struct{}
 // Bind attaches api routes
 func (api *API) Bind(group *echo.Group) {
 	group.Get("/v1/conf", api.ConfHandler)
-	group.Get("/v1/word/search", api.SearchWordHandler)
+	group.Get("/v1/dictionary/search", api.SearchWordHandler)
 }
 
 // ConfHandler handle the app config, for example
