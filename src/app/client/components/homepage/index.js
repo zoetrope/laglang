@@ -19,10 +19,7 @@ export default class Homepage extends Component {
             content: 'Golang Isomorphic React/Hot Reloadable/Redux/Css-Modules Starter Kit'
           }
         ]} />
-      <h1 className={styles['example']}>
-        Hot Reloadable <br />
-        Golang + React + Redux + Css-Modules
-        <br />Isomorphic Starter Kit</h1>
+      <h1 className={styles['example']}> Laglang </h1>
       <br />
       <button className={styles['btn'] + ' ' + styles['btn-default']}>push</button>
       <p className={styles['p']}>

@@ -1,8 +1,4 @@
-/**
- * action types
- */
-
-export const SET_CONFIG = 'SET_CONFIG';
+import {SET_CONFIG} from './ActionTypes';
 
 /**
  * action creators
