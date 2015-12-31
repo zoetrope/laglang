@@ -10,9 +10,10 @@ import (
 
 // Dictionary data
 type Dictionary struct {
-	Word        string `json:"word`
-	Class       string `json:"class`
-	Translation string `json:"translation`
+	Id          string `json:"id"`
+	Word        string `json:"word"`
+	Class       string `json:"class"`
+	Translation string `json:"translation"`
 }
 
 // API is a defined as struct bundle
@@ -36,16 +37,16 @@ func (api *API) ConfHandler(c *echo.Context) error {
 
 // SearchWordHandler handle to search in dictionary with given word
 func (api *API) SearchWordHandler(c *echo.Context) error {
-	//logger := c.Echo().Logger()
+//	logger := c.Echo().Logger()
 	//app := c.Get("app").(*App)
 
-	word := c.Query("word")
-	//	if word == ""
+	query := c.Query("query")
+	//	if query == ""
 
 	client, e := elastic.NewClient()
 	Must(e)
 
-	termQuery := elastic.NewTermQuery("word", word)
+	termQuery := elastic.NewTermQuery("word", query)
 	searchResult, e := client.Search().
 	Index("english-japanese-dictionary").
 	Query(termQuery).
@@ -58,6 +59,7 @@ func (api *API) SearchWordHandler(c *echo.Context) error {
 			var d Dictionary
 			err := json.Unmarshal(*hit.Source, &d)
 			Must(err)
+			d.Id = hit.Id
 			dics = append(dics, d)
 		}
 		c.JSON(200, dics)

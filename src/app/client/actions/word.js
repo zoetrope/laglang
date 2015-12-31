@@ -1,32 +1,32 @@
 import {SEARCH_WORD, RECEIVE_WORDS} from './ActionTypes';
 
-export function searchWord(word) {
+export function searchWordAction(query) {
   return {
     type: SEARCH_WORD,
-    word: word
+    query: query
   };
 }
 
-export function receiveWords(words) {
+export function receiveWordsAction(words) {
   return {
     type: RECEIVE_WORDS,
     words: words
   };
 }
 
-export function getWord(word) {
+export function searchWord(query) {
   return dispatch => {
-    dispatch(searchWord(word));
-    return fetch('/api/v1/word/search?word=' + word)
+    dispatch(searchWordAction(query));
+    return fetch('/api/v1/word/search?query=' + query)
       .then(r => r.json())
-      .then(words=> dispatch(receiveWords(words)));
+      .then(words=> dispatch(receiveWordsAction(words)));
   };
 }
 
-export function searchWordsIfNeeded(word) {
+export function searchWordIfNeeded(query) {
   return (dispatch, getState) => {
     if (!getState().isFetching) {
-      return dispatch(getWord(word));
+      return dispatch(searchWord(query));
     }
   };
 }

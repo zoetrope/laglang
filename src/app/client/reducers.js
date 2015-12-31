@@ -10,10 +10,10 @@ function config(state = {}, action) {
   }
 }
 
-function words(state = {isFetching: false, word: '', words: []}, action) {
+function dictionary(state = {isFetching: false, query: '', words: []}, action) {
   switch (action.type) {
     case SEARCH_WORD:
-      return Object.assign({}, state, {isFetching: true, word: action.word});
+      return Object.assign({}, state, {isFetching: true, query: action.query});
     case RECEIVE_WORDS:
       return Object.assign({}, state, {isFetching: false, words: action.words});
     default:
@@ -23,5 +23,5 @@ function words(state = {isFetching: false, word: '', words: []}, action) {
 
 export default combineReducers({
   config,
-  words
+  dictionary
 });

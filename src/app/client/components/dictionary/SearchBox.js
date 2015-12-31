@@ -3,30 +3,31 @@ import styles from './styles';
 
 class SearchBox extends Component {
 
-  constructor(props, context){
+  constructor(props, context) {
     super(props, context);
     this.state = {
-      text: this.props.text || ''
+      query: this.props.query || ''
     };
   }
 
   handleSubmit(e) {
-    const text = e.target.value.trim();
-    if(e.which===13){
-      this.props.onSearch(text);
-      console.log('submit: ' + text );
+    const query = e.target.value.trim();
+    if (e.which === 13) {
+      this.props.onSearch(query);
+      console.log('submit: ' + query);
     }
   }
 
   handleChange(e) {
     console.log('change: ' + e);
-    this.setState({ text: e.target.value });
+    this.setState({query: e.target.value});
   }
 
   handleBlur(e) {
     console.log('blur: ' + e);
     this.props.onSearch(e.target.value);
   }
+
   render() {
     return (
       <input
@@ -34,7 +35,7 @@ class SearchBox extends Component {
         type="text"
         placeholder={this.props.placeholder}
         autoFocus="true"
-        value={this.state.text}
+        value={this.state.query}
         onBlur={this.handleBlur.bind(this)}
         onChange={this.handleChange.bind(this)}
         onKeyDown={this.handleSubmit.bind(this)}
@@ -45,7 +46,7 @@ class SearchBox extends Component {
 
 SearchBox.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  text: PropTypes.string,
+  query: PropTypes.string,
   placeholder: PropTypes.string
 };
 
