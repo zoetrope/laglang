@@ -21,7 +21,7 @@ export default class Dictionary extends Component {
       <h2 className={example}>Word:</h2>
       <div className={p}>
         <SearchBox query={dictionary.query} onSearch={searchWord}/>
-        <WordList words={dictionary.words}/>
+        <WordList searchResult={dictionary.searchResult}/>
       </div>
       <br />
       go <IndexLink to='/' className={link}>home</IndexLink>

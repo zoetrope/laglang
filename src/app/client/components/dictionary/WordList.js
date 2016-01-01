@@ -4,12 +4,12 @@ import WordItem from './WordItem';
 export default class WordList extends Component {
   render() {
 
-    const { words } = this.props;
+    const { searchResult } = this.props;
 
     return (
       <ul>
-        {words.map(word =>
-          <WordItem key={word.id} word={word}/>
+        {searchResult.hits.map(hit =>
+          <WordItem key={hit._id} word={hit}/>
         )}
       </ul>
     );

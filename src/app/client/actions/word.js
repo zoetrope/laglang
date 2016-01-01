@@ -7,10 +7,10 @@ export function searchWordAction(query) {
   };
 }
 
-export function receiveWordsAction(words) {
+export function receiveWordsAction(searchResult) {
   return {
     type: RECEIVE_WORDS,
-    words: words
+    searchResult: searchResult
   };
 }
 
@@ -19,7 +19,7 @@ export function searchWord(query) {
     dispatch(searchWordAction(query));
     return fetch('/api/v1/dictionary/search?query=' + query)
       .then(r => r.json())
-      .then(words=> dispatch(receiveWordsAction(words)));
+      .then(searchResult=> dispatch(receiveWordsAction(searchResult)));
   };
 }
 

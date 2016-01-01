@@ -5,21 +5,21 @@ import (
 
 	"github.com/labstack/echo"
 	"gopkg.in/olivere/elastic.v3"
-	"encoding/json"
 )
-
-// Dictionary data
-type Dictionary struct {
-	Id          string `json:"id"`
-	Word        string `json:"word"`
-	Class       string `json:"class"`
-	Translation string `json:"translation"`
-}
 
 // API is a defined as struct bundle
 // for api. Feel free to organize
 // your app as you wish.
 type API struct{}
+
+//TODO: read from yaml file
+const (
+	AllIndex = "laglang-*"
+	AllDictionaryIndex = "laglang-dictionary-*"
+	EijiroIndex = "laglang-dictionary-eijiro"
+	AllScriptIndex = "laglang-script-*"
+	PillarsIndex = "laglang-script-pillars"
+)
 
 // Bind attaches api routes
 func (api *API) Bind(group *echo.Group) {
@@ -37,35 +37,22 @@ func (api *API) ConfHandler(c *echo.Context) error {
 
 // SearchWordHandler handle to search in dictionary with given word
 func (api *API) SearchWordHandler(c *echo.Context) error {
-//	logger := c.Echo().Logger()
+	//	logger := c.Echo().Logger()
 	//app := c.Get("app").(*App)
 
 	query := c.Query("query")
-	//	if query == ""
 
 	client, e := elastic.NewClient()
 	Must(e)
 
-	termQuery := elastic.NewTermQuery("word", query)
+	termQuery := elastic.NewQueryStringQuery(query)
 	searchResult, e := client.Search().
-	Index("english-japanese-dictionary").
+	Index(AllIndex).
 	Query(termQuery).
 	From(0).Size(1000).
 	Do()
 
-	if searchResult.Hits != nil {
-		var dics = make([]Dictionary, 0, searchResult.Hits.TotalHits)
-		for _, hit := range searchResult.Hits.Hits {
-			var d Dictionary
-			err := json.Unmarshal(*hit.Source, &d)
-			Must(err)
-			d.Id = hit.Id
-			dics = append(dics, d)
-		}
-		c.JSON(200, dics)
-	} else {
-		c.JSON(200, nil);
-	}
+	c.JSON(200, searchResult.Hits)
 
 	return nil
 }

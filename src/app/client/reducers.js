@@ -10,12 +10,12 @@ function config(state = {}, action) {
   }
 }
 
-function dictionary(state = {isFetching: false, query: '', words: []}, action) {
+function dictionary(state = {isFetching: false, query: '', searchResult: { total:0, hits: []}}, action) {
   switch (action.type) {
     case SEARCH_WORD:
       return Object.assign({}, state, {isFetching: true, query: action.query});
     case RECEIVE_WORDS:
-      return Object.assign({}, state, {isFetching: false, words: action.words});
+      return Object.assign({}, state, {isFetching: false, searchResult: action.searchResult});
     default:
       return state;
   }

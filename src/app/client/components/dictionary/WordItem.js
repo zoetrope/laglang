@@ -9,7 +9,7 @@ export default class WordItem extends Component {
     return (
       <li>
         <div>
-          <label>{word.word}</label>{word.translation}
+          <label>{word._source.word}</label>{word._source.translation} ({word._score})
         </div>
       </li>
     );
