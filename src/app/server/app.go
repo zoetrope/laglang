@@ -21,8 +21,21 @@ import (
 type App struct {
 	Engine *echo.Echo
 	Conf   *config.Config
-	React  *React
 	API    *API
+}
+
+// Resp is a struct for convinient
+// react app response parsing.
+// Feel free to add any other keys to this struct
+// and return value for this key at ecmascript side.
+// Keep it sync with: src/app/client/router/toString.js:23
+type Resp struct {
+	UUID       string        `json:"uuid"`
+	Error      string        `json:"error"`
+	Redirect   string        `json:"redirect"`
+	Title      string        `json:"title"`
+	Meta       string        `json:"meta"`
+	Initial    string        `json:"initial"`
 }
 
 // NewApp returns initialized struct
@@ -61,11 +74,6 @@ func NewApp(opts ...AppOptions) *App {
 		Conf:   conf,
 		Engine: engine,
 		API:    &API{},
-		React: NewReact(
-			conf.UString("duktape.path"),
-			conf.UBool("debug"),
-			engine,
-		),
 	}
 
 	// Use precompiled embedded templates
@@ -120,7 +128,11 @@ func NewApp(opts ...AppOptions) *App {
 					return nil
 				}
 				// if static file not found handle request via react application
-				return app.React.Handle(c)
+				UUID := c.Get("uuid").(*uuid.UUID)
+				c.Render(http.StatusOK, "react.html", Resp{
+					UUID:  UUID.String(),
+				})
+				return nil;
 			}
 			// Move further if err is not `Not Found`
 			return err
