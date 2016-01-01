@@ -8,7 +8,6 @@ import toString from './toString';
 import { Promise } from 'when';
 import createRoutes from './routes';
 import { createStore } from '../store';
-import Header from '#app/components/header';
 
 export function run() {
   // init promise polyfill
@@ -34,7 +33,6 @@ export function run() {
     <div>
       <Provider store={store}>
         <div>
-          <Header></Header>
           <Router history={createHistory()}>{createRoutes({store, first: {time: true}})}</Router>
           {monitor}
         </div>
