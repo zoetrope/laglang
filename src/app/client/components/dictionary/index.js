@@ -40,5 +40,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+//TODO: use @connect decorator
 export default connect(mapStateToProps, mapDispatchToProps)(Dictionary);
 

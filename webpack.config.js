@@ -7,7 +7,7 @@ var cssLoader = ExtractTextPlugin.extract(
   'css-loader?module&localIdentName=[name]__[local]___[hash:base64:5]' +
   '&disableStructuralMinification' +
   '!autoprefixer-loader!' +
-  'stylus-loader?paths[]=src/app/client/css/&paths[]=node_modules/bootstrap-styl/&import=./ctx'
+  'stylus-loader?paths[]=src/app/client/css/&import=./ctx'
 );
 
 var plugins = [
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     'style-loader',
     'css-loader?module&disableStructuralMinification' +
       '!autoprefixer-loader' +
-      '!stylus-loader?paths=src/app/client/css/&paths[]=node_modules/bootstrap-styl&import=./ctx'
+      '!stylus-loader?paths[]=src/app/client/css/&import=./ctx'
   );
 };
 
@@ -46,10 +46,11 @@ var config  = {
   plugins: plugins,
   module: {
     loaders: [
+      {test: /\.css$/, loader: 'style-loader!css-loader'},
       {test: /\.styl$/, loader: cssLoader},
       {test: /\.(png|gif)$/, loader: 'url-loader?name=[name]@[hash].[ext]&limit=5000'},
       {test: /\.svg$/, loader: 'url-loader?name=[name]@[hash].[ext]&limit=5000!svgo-loader?useConfig=svgo1'},
-      {test: /\.(pdf|ico|jpg|eot|otf|woff|ttf|mp4|webm)$/, loader: 'file-loader?name=[name]@[hash].[ext]'},
+      {test: /\.(pdf|ico|jpg|eot|otf|woff|woff2|ttf|mp4|webm)$/, loader: 'file-loader?name=[name]@[hash].[ext]'},
       {test: /\.json$/, loader: 'json-loader'},
       {
         test: /\.jsx?$/,
@@ -67,7 +68,8 @@ var config  = {
       '#app': path.join(__dirname, '/src/app/client'),
       '#c': path.join(__dirname, '/src/app/client/components'),
       '#css': path.join(__dirname, '/src/app/client/css')
-    }
+    },
+    moduleDirectories: ['node_modules']
   },
   svgo1: {
     multipass: true,

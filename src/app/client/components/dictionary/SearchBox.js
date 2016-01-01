@@ -31,7 +31,7 @@ class SearchBox extends Component {
   render() {
     return (
       <input
-        className={styles['form-control']}
+        className="form-control"
         type="text"
         placeholder={this.props.placeholder}
         autoFocus="true"

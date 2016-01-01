@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
+require('./favicon.ico');
+
 export default class App extends Component {
 
   render() {

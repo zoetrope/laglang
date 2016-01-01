@@ -95,7 +95,7 @@ func NewApp(opts ...AppOptions) *App {
 
 	// Avoid favicon react handling
 	app.Engine.Get("/favicon.ico", func(c *echo.Context) error {
-		c.Redirect(301, "/static/images/favicon.ico")
+		c.Redirect(301, "/static/build/favicon.ico")
 		return nil
 	})
 

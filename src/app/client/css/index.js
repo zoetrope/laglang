@@ -1,5 +1,6 @@
 require('./normalize');
 require('./global');
+require('bootstrap/dist/css/bootstrap.css');
 
 /**
  * Components.
