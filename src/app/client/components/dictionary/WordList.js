@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import WordItem from './WordItem';
+import {wordList} from './styles';
 
 export default class WordList extends Component {
   render() {
@@ -7,11 +8,11 @@ export default class WordList extends Component {
     const { searchResult } = this.props;
 
     return (
-      <ul>
+      <div className={wordList}>
         {searchResult.hits.map(hit =>
           <WordItem key={hit._id} word={hit}/>
         )}
-      </ul>
+      </div>
     );
   }
 }

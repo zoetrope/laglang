@@ -18,7 +18,6 @@ export default class Dictionary extends Component {
 
     return <div>
       <Helmet title='Word'/>
-      <h2 className={example}>Word:</h2>
       <div className={p}>
         <SearchBox query={dictionary.query} onSearch={searchWord}/>
         <WordList searchResult={dictionary.searchResult}/>
