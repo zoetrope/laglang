@@ -13,6 +13,18 @@ export default class Dictionary extends Component {
     callback();
   }
 
+  componentWillMount() {
+    if (this.props.location.query.query) {
+      this.props.searchWord(this.props.location.query.query);
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.props.dictionary.query !== nextProps.location.query.query) {
+      this.props.searchWord(nextProps.location.query.query);
+    }
+  }
+
   render() {
     const {searchWord , dictionary} = this.props;
 

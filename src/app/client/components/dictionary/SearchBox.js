@@ -10,22 +10,21 @@ class SearchBox extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps, nextState) {
+    this.setState({query: this.props.query || ''});
+  }
+
   handleSubmit(e) {
     const query = e.target.value.trim();
     if (e.which === 13) {
       this.props.onSearch(query);
+      this.context.history.pushState(null, '/dictionary', {query: query});
       console.log('submit: ' + query);
     }
   }
 
   handleChange(e) {
-    console.log('change: ' + e);
     this.setState({query: e.target.value});
-  }
-
-  handleBlur(e) {
-    console.log('blur: ' + e);
-    this.props.onSearch(e.target.value);
   }
 
   render() {
@@ -36,7 +35,6 @@ class SearchBox extends Component {
         placeholder={this.props.placeholder}
         autoFocus="true"
         value={this.state.query}
-        onBlur={this.handleBlur.bind(this)}
         onChange={this.handleChange.bind(this)}
         onKeyDown={this.handleSubmit.bind(this)}
       />
@@ -48,6 +46,10 @@ SearchBox.propTypes = {
   onSearch: PropTypes.func.isRequired,
   query: PropTypes.string,
   placeholder: PropTypes.string
+};
+
+SearchBox.contextTypes = {
+  history: PropTypes.object.isRequired
 };
 
 export default SearchBox;
