@@ -1,0 +1,22 @@
+:local(.navbar) {
+  background-color: mainColor500 !important
+  border-color: gray050 !important
+}
+
+:local(.navitem) {
+  > li {
+    > a {
+      color: white !important
+    }
+    > a:hover {
+      color: gray300 !important
+    }
+  }
+  > :global(.active) > a {
+    background-color: mainColor700 !important
+  }
+}
+
+// TODO:
+// use !important to overwrite bootstrap style, since CSS resolving order is not guaranteed
+// https://github.com/webpack/webpack/issues/215

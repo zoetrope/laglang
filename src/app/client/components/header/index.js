@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-//import styles from './styles';
 import { IndexLink, Link } from 'react-router';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
-//import './styles.styl';
+import classNames from 'classnames/bind'
+import styles from './styles';
+let cx = classNames.bind(styles);
 
 export default class Header extends Component {
 
-  /*
-   <nav className="navbar navbar-inverse navbar-fixed-top">
-   <nav className={styles['navbar'] + ' ' + styles['navbar-inverse'] + ' ' + styles['navbar-fixed-top']}>
-   */
   render() {
-    return <Navbar inverse fixedTop>
+    return <Navbar className={cx('navbar')} inverse fixedTop>
       <Navbar.Header>
         <Navbar.Brand>
           <a href="#">Laglang</a>
@@ -21,10 +18,10 @@ export default class Header extends Component {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        <Nav>
-          <LinkContainer to="/">
+        <Nav className={cx('navitem')}>
+          <IndexLinkContainer to="/">
             <NavItem eventKey={1}>Home</NavItem>
-          </LinkContainer>
+          </IndexLinkContainer>
           <LinkContainer to="/dictionary">
             <NavItem eventKey={2}>Dictionary</NavItem>
           </LinkContainer>

@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "flummox": "^3.6.7",
+    "classnames": "^2.2.1",
     "history": "^1.17.0",
     "lodash": "^3.10.1",
     "react": "^0.14.5",
