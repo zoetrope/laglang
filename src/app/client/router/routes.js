@@ -4,6 +4,7 @@ import App from '#app/components/app';
 import Homepage from '#app/components/homepage';
 import Usage from '#app/components/usage';
 import Dictionary from '#app/components/dictionary';
+import Memo from '#app/components/memo';
 import NotFound from '#app/components/not-found';
 
 /**
@@ -29,6 +30,7 @@ export default ({store, first}) => {
   return <Route path="/" component={App}>
     <IndexRoute component={Homepage} onEnter={w(Homepage.onEnter)}/>
     <Route path="/dictionary" component={Dictionary} onEnter={w(Dictionary.onEnter)}/>
+    <Route path="/memo" component={Memo} onEnter={w(Memo.onEnter)}/>
     <Route path="/usage" component={Usage} onEnter={w(Usage.onEnter)}/>
     {/* Server redirect in action */}
     <Redirect from="/docs" to="/usage" />

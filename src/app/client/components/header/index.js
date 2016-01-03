@@ -25,14 +25,17 @@ export default class Header extends Component {
           <LinkContainer to="/dictionary">
             <NavItem eventKey={2}>Dictionary</NavItem>
           </LinkContainer>
+          <LinkContainer to="/memo">
+            <NavItem eventKey={3}>Memo</NavItem>
+          </LinkContainer>
           <LinkContainer to="/translator">
-            <NavItem eventKey={3}>Translator</NavItem>
+            <NavItem eventKey={4}>Translator</NavItem>
           </LinkContainer>
           <LinkContainer to="/history">
-            <NavItem eventKey={4}>History</NavItem>
+            <NavItem eventKey={5}>History</NavItem>
           </LinkContainer>
           <LinkContainer to="/card">
-            <NavItem eventKey={5}>Card</NavItem>
+            <NavItem eventKey={6}>Card</NavItem>
           </LinkContainer>
         </Nav>
       </Navbar.Collapse>
