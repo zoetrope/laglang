@@ -32,8 +32,8 @@ sourceSets {
 
 mainClassName = "io.vertx.core.Launcher"
 def mainVerticleName = "MainVerticle"
-def watchForChange = "src/**/*.kt"
-def doOnChange = "./gradlew classes"
+def watchForChange = "src/main/**/*.kt,src/main/resources/**/*"
+def doOnChange = "./gradlew processResources classes"
 
 run {
     args = ["run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$mainClassName", "--on-redeploy=$doOnChange"]

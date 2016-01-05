@@ -9,7 +9,7 @@ export default class App extends Component {
 
   render() {
     return <div>
-      <Helmet title='Go + React + Redux = rocks!'/>
+      <Helmet title='Vert.x + Kotlin + React + Redux'/>
       <Header></Header>
       <div className={ container }>
         {this.props.children}

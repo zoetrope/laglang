@@ -18,14 +18,14 @@ export default class Homepage extends Component {
         meta={[
           {
             property: 'og:title',
-            content: 'Golang Isomorphic React/Hot Reloadable/Redux/Css-Modules Starter Kit'
+            content: 'Vert.x + Kotlin + React + Redux'
           }
         ]} />
       <h1 className={cx('example')}> Laglang </h1>
       <br />
       <button className={cx('btn', 'btn-default')}>push</button>
       <p className={cx('p')}>
-        Please take a look at <Link className={cx('link')} to='/docs'>usage</Link> page.
+        Please take a look at <Link className={cx('link')} to='/dictionary'>usage</Link> page.
       </p>
     </div>;
   }
