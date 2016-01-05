@@ -23,7 +23,7 @@ export default class Homepage extends Component {
         ]} />
       <h1 className={cx('example')}> Laglang </h1>
       <br />
-      <button className={cs('btn', 'btn-default')}>push</button>
+      <button className={cx('btn', 'btn-default')}>push</button>
       <p className={cx('p')}>
         Please take a look at <Link className={cx('link')} to='/docs'>usage</Link> page.
       </p>
