@@ -5,12 +5,15 @@ apply plugin: "com.github.johnrengelman.shadow"
 repositories {
     jcenter() // for vertx, kotlin
     maven { url= "http://dl.bintray.com/cy6ergn0m/maven" } // for vertx3-lang-kotlin
+    maven { url= "http://dl.bintray.com/zoetrope/maven" } // for elastiko
 }
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     compile "org.jetbrains.kotlinx:vertx3-lang-kotlin:$vertx_kotlin_version"
     compile "io.vertx:vertx-core:$vertx_version"
     compile "org.elasticsearch:elasticsearch:$elasticsearch_version"
+    compile "com.github.zoetrope:elastiko:$elastiko_version"
+    compile "nl.komponents.kovenant:kovenant:$kovenant_version"
 }
 
 group "zoetro"
