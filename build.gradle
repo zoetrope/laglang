@@ -10,6 +10,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     compile "org.jetbrains.kotlinx:vertx3-lang-kotlin:$vertx_kotlin_version"
     compile "io.vertx:vertx-core:$vertx_version"
+    compile "org.elasticsearch:elasticsearch:$elasticsearch_version"
 }
 
 group "zoetro"
